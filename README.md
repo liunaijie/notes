@@ -1,6 +1,7 @@
 项目说明：  
 1. 记录在 LeetCode 上的刷题记录  
-2. 记录在读各本书时做的一些题目和笔记。每本书一个项目文件。
+2. 设计模式`design-patterns`
+3. 记录在读各本书时做的一些题目和笔记。每本书一个项目文件。
 
 整理的书籍有以下： 
 - `spring-in-action`《spring in action》Craig Walls 著，张卫滨 译。----《人民邮电出版社》 
