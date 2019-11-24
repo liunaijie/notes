@@ -19,6 +19,12 @@ public class T206 {
 	 * 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
 	 */
 
+	/**
+	 * 迭代法
+	 *
+	 * @param head
+	 * @return
+	 */
 	public ListNode reverseList(ListNode head) {
 		ListNode prev = null;
 		ListNode cur = head;
@@ -29,6 +35,30 @@ public class T206 {
 			cur = temp;
 		}
 		return prev;
+	}
+
+
+	/**
+	 * 递归法
+	 *
+	 * @param head
+	 * @return
+	 */
+	public ListNode reverseList2(ListNode head) {
+		ListNode prev = null;
+		ListNode cur = head;
+		return reverseHelp(prev, cur);
+	}
+
+	public ListNode reverseHelp(ListNode prev, ListNode cur) {
+		if (cur == null) {
+			return prev;
+		}
+		ListNode temp = cur.next;
+		cur.next = prev;
+		prev = cur;
+		cur = temp;
+		return reverseHelp(prev, cur);
 	}
 
 	class ListNode {
