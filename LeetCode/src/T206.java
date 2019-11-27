@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 /**
  * 反转链表
  *
