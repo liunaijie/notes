@@ -265,12 +265,63 @@ public class SortUtil {
 		a[second] = temp;
 	}
 
+	/**
+	 * 堆排序
+	 * 如果要对[19,4,6,3,22,8,7]这个数组排序，首先要将数组长度加一，首位部零
+	 * 改成这样的结构:[0,19,4,6,3,22,8,7]
+	 * 然后调用此函数时，参数为 heapSort(a,a.length-1)。
+	 * 总之，传入长度应为数组长度减一，则会对除首位的其他元素排序
+	 *
+	 * @param a 数组
+	 * @param n 要排序的长度
+	 */
+	public void heapSort(int[] a, int n) {
+		//首先按照大顶堆建堆，完成后第一个元素就是最大的元素
+		buildHeap(a, 10);
+		int k = n;
+		while (k > 1) {
+			//将最大的元素，即1，与最后一个元素交换，那最大元素就放到了下标为n的位置
+			swap(a, 1, k);
+			--k;
+			//然后重新建堆，将剩下的n-1个元素重新构建成堆，再继续交换
+			heapHelp(a, k, 1);
+		}
+	}
 
-	public static void main(String[] args) {
-		int[] a = {6, 3, 1, 8, 2, 9, 4, 7};
-//		mergeSort(a);
-		for (int i : a) {
-			System.out.print(i + " ");
+	/**
+	 * 建堆
+	 * 按照大顶堆来完成，即每个元素都比下面的元素大
+	 *
+	 * @param a 数组
+	 * @param n
+	 */
+	private void buildHeap(int[] a, int n) {
+		for (int i = n / 2; i >= 1; --i) {
+			heapHelp(a, n, i);
+		}
+	}
+
+	/**
+	 * 建堆
+	 *
+	 * @param a
+	 * @param n
+	 * @param i
+	 */
+	private void heapHelp(int[] a, int n, int i) {
+		while (true) {
+			int maxPos = i;
+			if (i * 2 <= n && a[i] < a[i * 2]) {
+				maxPos = i * 2;
+			}
+			if (i * 2 + 1 <= n && a[maxPos] < a[i * 2 + 1]) {
+				maxPos = i * 2 + 1;
+			}
+			if (maxPos == i) {
+				break;
+			}
+			swap(a, i, maxPos);
+			i = maxPos;
 		}
 	}
 
