@@ -54,14 +54,8 @@ public class T807 {
 
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[i].length; j++) {
-				if (grid[i][j] > left[i]) {
-					// 查看该值是不是改行最大值
-					left[i] = grid[i][j];
-				}
-				if (grid[i][j] > top[j]) {
-					// 查看该值是不是该列最大值
-					top[j] = grid[i][j];
-				}
+				left[i] = Math.max(grid[i][j], left[i]);
+				top[j] = Math.max(grid[i][j], top[j]);
 			}
 		}
 		int result = 0;

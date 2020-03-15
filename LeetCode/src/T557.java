@@ -52,4 +52,32 @@ public class T557 {
 	}
 
 
+	public static String reverseWords2(String s) {
+		StringBuilder stringBuilder = new StringBuilder();
+		int start = 0;
+		for (int end = 0; end < s.length(); end++) {
+			if (s.charAt(end) == ' ') {
+				append(stringBuilder, s, start, end - 1);
+				stringBuilder.append(' ');
+				start = end + 1;
+			}
+			if (end == s.length() - 1) {
+				append(stringBuilder, s, start, end);
+			}
+		}
+		return stringBuilder.toString();
+	}
+
+	private static void append(StringBuilder stringBuilder, String s, int start, int end) {
+		for (int i = end; i >= start; i--) {
+			stringBuilder.append(s.charAt(i));
+		}
+	}
+
+
+	public static void main(String[] args) {
+		String s = "Let's take LeetCode contest";
+		System.out.println(reverseWords2(s));
+	}
+
 }

@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author LiuNaiJie
@@ -14,6 +16,17 @@ public class T961 {
 			}
 		}
 		return 0;
+	}
+
+	public int repeatedNTimesHash(int[] A) {
+		Set<Integer> set = new HashSet<>(A.length);
+		for (int i : A) {
+			if (set.contains(i)) {
+				return i;
+			}
+			set.add(i);
+		}
+		return -1;
 	}
 
 }

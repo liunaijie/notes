@@ -28,22 +28,33 @@ public class T852 {
 	 */
 
 	/**
-	 * 前后寻找最大值，返回该坐标
+	 * 遍历扫描
 	 */
-	class Solution {
-		public int peakIndexInMountainArray(int[] A) {
-			int start = 0;
-			int end = A.length - 1;
-			while (start < end) {
-				if (A[start] < A[start + 1]) {
-					start++;
-				}
-				if (A[end] < A[end - 1]) {
-					end--;
-				}
-			}
-			return start;
+	public int peakIndexInMountainArray(int[] A) {
+		int i = 0;
+		while (A[i] < A[i + 1]) {
+			i++;
 		}
+		return i;
+	}
+
+	/**
+	 * 双指针查找
+	 *
+	 * @param A
+	 * @return
+	 */
+	public int peakIndexInMountainArrayDouble(int[] A) {
+		int left = 0, right = A.length - 1;
+		while (left < right) {
+			int mid = left + (right - left) / 2;
+			if (A[mid] < A[mid + 1]) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
+			}
+		}
+		return left;
 	}
 
 }
