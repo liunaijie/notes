@@ -240,12 +240,14 @@ public class SortUtil {
 	 * @param right 要分区的右侧下标
 	 * @return
 	 */
-	private int partition(int[] a, int left, int right) {
+	public int partition(int[] a, int left, int right) {
 		//设置分区点为数组最后一个元素
 		int pivot = a[right];
 		//开始分区
 		int i = left;
 		for (int j = left; j < right - 1; j++) {
+			//从左向右找到比分区点小的元素
+			// 找到下标为j，将他从i开始向右放，找到后较
 			if (a[j] < pivot) {
 				//如果元素比分区点小，则将元素从左侧开始放，将原来左侧的数据换到现在这个位置上
 				//i表示左侧的位置，交换后就加一
