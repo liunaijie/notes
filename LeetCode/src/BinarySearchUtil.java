@@ -208,4 +208,13 @@ public class BinarySearchUtil {
 		return -1;
 	}
 
+	/**
+	 * 变形5，数组不是单调递增有序，类似[4,5,6,7,1,2,3]，查找2
+	 *
+	 * @param a     数组
+	 * @param value 要查找的元素
+	 * @return
+	 * @see T33
+	 */
+
 }
