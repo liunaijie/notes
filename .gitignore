@@ -19,7 +19,7 @@ target
 *.ipr
 .mvn
 mvnw
-
+out
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -30,4 +30,3 @@ mvnw
 
 ### VS Code ###
 .vscode/
-
