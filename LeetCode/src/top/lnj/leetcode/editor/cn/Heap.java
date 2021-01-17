@@ -36,7 +36,7 @@ public class Heap {
 	 */
 	private int[] a;
 	/**
-	 * 对可以存储的最大数据个数
+	 * 堆可以存储的最大数据个数
 	 */
 	private int n;
 	/**
@@ -46,6 +46,8 @@ public class Heap {
 
 	public Heap(int capacity) {
 		a = new int[capacity + 1];
+		n = capacity;
+		count = 0;
 	}
 
 	/**
@@ -96,6 +98,12 @@ public class Heap {
 			a[maxPos] = temp;
 			i = maxPos;
 		}
+	}
+
+	public int[] getHeap() {
+		int[] r = new int[count];
+		System.arraycopy(a, 1, r, 0, count);
+		return r;
 	}
 
 }

@@ -41,16 +41,13 @@ public class T120 {
 			return 0;
 		}
 		int[][] paths = new int[triangle.size()][triangle.size()];
-		for (int i = 0; i < triangle.size(); i++) {
+		paths[0][0] = triangle.get(0).get(0);
+		for (int i = 1; i < triangle.size(); i++) {
 			List<Integer> single = triangle.get(i);
-			if (single.size() == 1) {
-				// 该行只有一个数据 即为第一行
-				paths[i][0] = single.get(0);
-				continue;
-			}
 			for (int j = 0; j < single.size(); j++) {
 				if (j == 0) {
-					// 当前行第一个数字 是上一行的和与当前值 由于是第一个所以不存在两个之间最小值 下面的最后一个数字同理
+					// 当前行第一个数字 是上一行的和与当前值累加
+					//因为第一个元素的上一步只能是第一个过来，m(i,j)的上一步为m(i-1,j-1)和m(i-1,j)由于j已经为0，所以j-1不存在，后面同理在当前行中的最后一个元素，在上一行中是没有的
 					paths[i][j] = paths[i - 1][0] + single.get(0);
 				} else if (j == single.size() - 1) {
 					// 当前行最后一个数字

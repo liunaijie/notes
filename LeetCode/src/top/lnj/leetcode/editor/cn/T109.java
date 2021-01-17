@@ -7,7 +7,7 @@ package top.lnj.leetcode.editor.cn;
 public class T109 {
 	/**
 	 * 有序链表转换二叉搜索树
-	 * 使用 top.lnj.leetcode.editor.T141 中的 top.lnj.leetcode.editor.ListNode 作为链表
+	 * 使用 T141 中的 ListNode 作为链表
 	 */
 
 	/**
@@ -22,6 +22,28 @@ public class T109 {
 		}
 		return root;
 	}
+
+	public TreeNode sortedListToBSTSelf(ListNode head) {
+		//先将链表转化为数组，由于数组需要预先知道容量，所以使用了arraylist容器
+		List<Integer> values = new ArrayList<Integer>();
+		while (head != null) {
+			values.add(head.val);
+			head = head.next;
+		}
+		return help(values, 0, values.size() - 1);
+	}
+
+	private TreeNode help(List<Integer> list, int left, int right) {
+		if (left > right) {
+			return null;
+		}
+		int mid = left + (right - left) / 2;
+		TreeNode node = new TreeNode(list.get(mid));
+		node.left = help(list, left, mid - 1);
+		node.right = help(list, mid + 1, right);
+		return node;
+	}
+
 
 	public static void main(String[] args) {
 		ListNode head = new ListNode(1);

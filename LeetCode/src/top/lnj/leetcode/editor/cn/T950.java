@@ -46,8 +46,8 @@ public class T950 {
 
 	/**
 	 * 解题思路
-	 * 拿到他的实例反着看，就比较好看出规律来：
-	 *
+	 * 拿到他的示例反着看，就比较好看出规律来：
+	 * <p>
 	 * 1.先将参数数组排序，
 	 * 2.将最大值放到队列中
 	 * 3.然后将队列中最后一个放到队列开头
@@ -65,15 +65,11 @@ public class T950 {
 		//1. 执行排序
 		Arrays.sort(deck);
 		Queue<Integer> result = new LinkedList<Integer>();
-		for (int i = deck.length - 1; i >= 0; i--) {
-			//2.4 将参数放到队列中
+		result.add(deck[deck.length - 1]);
+		for (int i = deck.length - 2; i >= 0; i--) {
+			result.add(result.poll());
 			result.add(deck[i]);
-			if (i != 0) {
-				//3. 当不是最后一个参数时，将队列中的最后一个值放到队列开始
-				result.add(result.poll());
-			}
 		}
-		// 6 将队列反转
 		for (int i = result.size() - 1; i >= 0; i--) {
 			deck[i] = result.poll();
 		}

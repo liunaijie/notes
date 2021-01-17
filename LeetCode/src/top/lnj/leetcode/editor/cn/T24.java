@@ -22,7 +22,7 @@ public class T24 {
 	 */
 
 	public ListNode swapPairs(ListNode head) {
-		ListNode fakeHead = new ListNode(0);
+		ListNode fakeHead = new ListNode(-1);
 		fakeHead.next = head;
 		ListNode pre = fakeHead;
 		ListNode curr = pre.next;
@@ -38,6 +38,18 @@ public class T24 {
 		pre.next = curr;
 		return fakeHead.next;
 	}
+
+	public ListNode swapPairs2(ListNode head) {
+		if ((head == null) || (head.next == null)) {
+			return head;
+		}
+		ListNode firstNode = head;
+		ListNode secondNode = head.next;
+		firstNode.next  = swapPairs2(secondNode.next);
+		secondNode.next = firstNode;
+		return secondNode;
+	}
+
 
 
 	class ListNode {
